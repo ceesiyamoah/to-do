@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 112.5%;
+}
+
+body {
+  font-size: inherit;
+  font-family: 'Josefin Sans', sans-serif;
+}
+/*# sourceMappingURL=index.css.map */
