@@ -1,5 +1,8 @@
 :root {
-	//variables
+	--very-light-grey: hsl(0, 0%, 98%);
+	--very-grayish-blue: hsl(236, 9%, 61%);
+	--gradient-1: hsl(192, 100%, 67%);
+	--gradient-2: hsl(280, 87%, 65%);
 }
 * {
 	margin: 0;
@@ -22,4 +25,25 @@ html {
 body {
 	font-size: inherit;
 	font-family: 'Josefin Sans', sans-serif;
+}
+
+.app {
+	padding: 3rem 1.5rem;
+	height: 100vh;
+	background-size: auto;
+	background-repeat: no-repeat;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__title {
+		color: var(--very-light-grey);
+		font-weight: 700;
+		letter-spacing: 0.5rem;
+		margin-right: auto;
+		font-size: 1rem;
+	}
 }

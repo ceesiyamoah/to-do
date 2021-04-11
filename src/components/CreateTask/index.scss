@@ -1,0 +1,22 @@
+.newtask {
+	margin-top: 1.5rem;
+	width: 100%;
+	padding: 0.5rem;
+	border-radius: 5px;
+	border: none;
+	background-color: var(--very-light-grey);
+	display: flex;
+	align-items: center;
+
+	&__input {
+		border: none;
+		font-family: inherit;
+		outline: none;
+		flex: 1;
+	}
+
+	&__checkbox:checked + &__button &__icon {
+		background-image: url(../../images/icon-check.svg);
+		background-size: cover;
+	}
+}

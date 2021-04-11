@@ -1,0 +1,31 @@
+.checkbox {
+	&__input {
+		display: none;
+	}
+	&__button {
+		margin-right: 0.5rem;
+		text-align: center;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+	}
+	&__icon {
+		border: 1px solid var(--very-grayish-blue);
+		width: 0.9rem;
+		height: 0.9rem;
+		border-radius: 100px;
+		display: block;
+		background-color: transparent;
+	}
+
+	&__input:checked + &__button > &__icon {
+		background-image: url('../../images/icon-check.svg'),
+			linear-gradient(to right bottom, var(--gradient-1), var(--gradient-2));
+		background-size: auto;
+		background-repeat: no-repeat;
+		background-position: center;
+		border: none;
+	}
+}

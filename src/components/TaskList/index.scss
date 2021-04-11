@@ -1,0 +1,34 @@
+.list {
+	list-style: none;
+	margin-top: 2rem;
+	&__item {
+		color: blue;
+		display: flex;
+		background-color: white;
+		border-bottom: 0.5px solid var(--very-grayish-blue);
+		padding: 0.9rem 0.5rem;
+
+		&:first-child {
+			border-top-right-radius: 5px;
+			border-top-left-radius: 5px;
+		}
+	}
+}
+.test {
+	width: 1rem;
+	height: 1rem;
+	fill: black;
+	margin-right: 0.5rem;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+	&:active {
+		fill: red;
+	}
+}
+
+.task-text {
+	text-decoration: line-through;
+	flex: 1;
+}
