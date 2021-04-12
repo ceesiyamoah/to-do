@@ -33,17 +33,3 @@ body {
 	background-size: auto;
 	background-repeat: no-repeat;
 }
-
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	&__title {
-		color: var(--very-light-grey);
-		font-weight: 700;
-		letter-spacing: 0.5rem;
-		margin-right: auto;
-		font-size: 1rem;
-	}
-}

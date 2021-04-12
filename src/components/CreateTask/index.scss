@@ -13,6 +13,8 @@
 		font-family: inherit;
 		outline: none;
 		flex: 1;
+		background-color: inherit;
+		color: inherit;
 	}
 
 	&__checkbox:checked + &__button &__icon {

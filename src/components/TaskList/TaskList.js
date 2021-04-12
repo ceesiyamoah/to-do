@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from '../../context/DataContext';
 import CheckBox from '../CheckBox/CheckBox';
 import './index.scss';
+import Task from './../Task';
+import { ThemeContext } from '../../context/ThemeContext';
 const TaskList = () => {
+	const { tasks, setTasks } = useContext(DataContext);
+	const { theme } = useContext(ThemeContext);
+	console.log(tasks.length);
 	return (
-		<ul className='list'>
-			<li className='list__item'>
-				<>
-					<CheckBox id='test' />
-					<span className='task-text'>Hllow my name is </span>
-					<svg xmlns='http://www.w3.org/2000/svg' className='test'>
-						<path
-							// fill='#494C6B'
-							fill-rule='evenodd'
-							d='M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z'
-						/>
-					</svg>
-				</>
-			</li>
-			<li className='list__item'>Co</li>
-			<li className='list__item'>Cffe</li>
-			<li className='list__item'>offe</li>
+		<ul
+			className='list'
+			style={{
+				backgroundColor: theme[theme.selected].taskBgColor,
+			}}
+		>
+			{tasks.map((item) => (
+				<li className='list__item' key={item.id}>
+					<Task {...item} />
+				</li>
+			))}
 		</ul>
 	);
 };
