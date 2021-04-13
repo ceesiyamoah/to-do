@@ -13,7 +13,7 @@ const ListDetails = () => {
 					<button
 						className='details__button'
 						onClick={() => {
-							setTasks((state) => state.filter((task) => !task.completed));
+							setTasks(tasks.filter((task) => !task.completed));
 						}}
 					>
 						Clear Completed

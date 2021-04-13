@@ -9,6 +9,7 @@ import Header from './components/Header/Header';
 import { ThemeContext } from './context/ThemeContext';
 import FilterTasks from './components/FilterTasks/FilterTasks';
 import CheckBox from './components/CheckBox/CheckBox';
+import { FilterContext } from './context/FilterContext';
 
 const App = () => {
 	const [tasks, setTasks] = useState([
@@ -32,6 +33,7 @@ const App = () => {
 			textColor: 'hsl(234, 39%, 85%)',
 		},
 	});
+	const [filter, setFilter] = useState(null);
 	return (
 		<div
 			className='app'
@@ -47,8 +49,10 @@ const App = () => {
 				<Header />
 				<DataContext.Provider value={{ tasks, setTasks }}>
 					<CreateTask />
-					<TaskList />
-					<FilterTasks />
+					<FilterContext.Provider value={{ filter, setFilter }}>
+						<TaskList />
+						<FilterTasks />
+					</FilterContext.Provider>
 				</DataContext.Provider>
 			</ThemeContext.Provider>
 			{tasks.length > 0 ? (
