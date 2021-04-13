@@ -8,6 +8,7 @@ import { DataContext } from './context/DataContext';
 import Header from './components/Header/Header';
 import { ThemeContext } from './context/ThemeContext';
 import FilterTasks from './components/FilterTasks/FilterTasks';
+import CheckBox from './components/CheckBox/CheckBox';
 
 const App = () => {
 	const [tasks, setTasks] = useState([
@@ -44,7 +45,6 @@ const App = () => {
 		>
 			<ThemeContext.Provider value={{ theme, setTheme }}>
 				<Header />
-
 				<DataContext.Provider value={{ tasks, setTasks }}>
 					<CreateTask />
 					<TaskList />

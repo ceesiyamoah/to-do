@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../context/DataContext';
 import './index.scss';
-const CheckBox = ({ id, completed, setCompleted }) => {
+const CheckBox = ({ id = null, completed }) => {
 	const { tasks, setTasks } = useContext(DataContext);
+
 	return (
 		<div className='checkbox'>
 			<input
@@ -10,14 +11,20 @@ const CheckBox = ({ id, completed, setCompleted }) => {
 				id={id}
 				className='checkbox__input'
 				checked={completed}
-				onChange={() => {
-					const tempTasks = [...tasks];
-					const tempTask = tempTasks.find((task) => task.id === id);
-					tempTask.completed = !tempTask.completed;
-					setTasks(tempTasks);
-				}}
+				onChange={() => {}}
 			/>
-			<label htmlFor={id} className='checkbox__button'>
+			<label
+				htmlFor={id}
+				className='checkbox__button'
+				onClick={() => {
+					if (id !== null) {
+						const tempTasks = [...tasks];
+						const tempTask = tempTasks.findIndex((task) => task.id === id);
+						tempTasks[tempTask].completed = !tempTasks[tempTask].completed;
+						setTasks(tempTasks);
+					}
+				}}
+			>
 				<span className='checkbox__icon'>&nbsp;</span>
 			</label>
 		</div>

@@ -16,7 +16,7 @@ const CreateTask = () => {
 				color: theme[theme.selected].textColor,
 			}}
 		>
-			<CheckBox id='new' completed={false} />
+			<CheckBox completed={false} />
 
 			<form
 				className='newtask__form'

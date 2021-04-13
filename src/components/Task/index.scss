@@ -3,6 +3,12 @@
 	flex: 1;
 	display: flex;
 	cursor: move;
+	padding: 0.9rem 0.5rem;
+	border-bottom: 2px solid transparent;
+
+	&-dragover {
+		border-bottom: 2px solid currentColor;
+	}
 
 	&__text {
 		text-align: start;

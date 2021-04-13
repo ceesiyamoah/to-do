@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import CheckBox from '../CheckBox/CheckBox';
 import { ThemeContext } from '../../context/ThemeContext';
 import { DataContext } from './../../context/DataContext';
@@ -7,11 +7,13 @@ import './index.scss';
 const Task = ({ id, text, completed }) => {
 	const { theme } = useContext(ThemeContext);
 	const { tasks, setTasks } = useContext(DataContext);
+	const [dragOver, setDragOver] = useState(false);
 
 	const drop = (e) => {
 		e.preventDefault();
-		const newPosition = e.currentTarget.id;
-		const currentPosition = e.dataTransfer.getData('currentLocation_id');
+		const newPosition = +e.currentTarget.id;
+		const currentPosition = +e.dataTransfer.getData('currentLocation_id');
+		let tempTasks = [...tasks];
 
 		const newPositionIndex = tasks.findIndex(
 			(task) => task.id === +newPosition
@@ -19,23 +21,69 @@ const Task = ({ id, text, completed }) => {
 		const currentPositionIndex = tasks.findIndex(
 			(task) => task.id === +currentPosition
 		);
-		const tempTasks = [...tasks];
 
-		const tempArr = tempTasks[currentPositionIndex];
-		tempTasks[currentPositionIndex] = tempTasks[newPositionIndex];
-		tempTasks[newPositionIndex] = tempArr;
+		//! More readable version
+		// if (currentPositionIndex < newPositionIndex) {
+		// 	tempTasks = [
+		// 		...tempTasks
+		// 			.slice(0, newPositionIndex + 1)
+		// 			.filter((item) => item.id !== currentPosition),
+		// 		tempTasks[currentPositionIndex],
+		// 		...tempTasks
+		// 			.slice(newPositionIndex + 1)
+		// 			.filter((item) => item.id !== newPosition),
+		// 	];
+		// } else {
+		// 	tempTasks = [
+		// 		...tempTasks.slice(0, newPositionIndex + 1),
+		// 		tempTasks[currentPositionIndex],
+		// 		...tempTasks
+		// 			.slice(newPositionIndex + 1)
+		// 			.filter((item) => item.id !== currentPosition),
+		// 	];
+		// }
+
+		tempTasks = [
+			...tempTasks
+				.slice(0, newPositionIndex + 1)
+				.filter((item) =>
+					currentPositionIndex < newPositionIndex
+						? item.id !== currentPosition
+						: item
+				),
+			tempTasks[currentPositionIndex],
+			...tempTasks
+				.slice(newPositionIndex + 1)
+				.filter((item) =>
+					currentPositionIndex > newPositionIndex
+						? item.id !== currentPosition
+						: item
+				),
+		];
+
 		setTasks(tempTasks);
+		setDragOver(false);
 	};
 	const dragStart = (e) => {
 		e.dataTransfer.setData('currentLocation_id', e.currentTarget.id);
 	};
+	const dragReset = (e) => {
+		e.preventDefault();
+		setDragOver(false);
+	};
 	return (
 		<div
-			className='task'
+			className={`task ${dragOver ? 'task-dragover' : ''}`}
 			id={id}
 			draggable
 			onDrop={drop}
+			onDragOver={(e) => {
+				e.preventDefault();
+				setDragOver(true);
+			}}
 			onDragStart={dragStart}
+			onDragLeave={dragReset}
+			onDragEnd={dragReset}
 		>
 			<CheckBox id={id} completed={completed} />
 			<span
