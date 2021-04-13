@@ -1,6 +1,8 @@
 import './index.scss';
 import mobileLight from './images/bg-mobile-light.jpg';
 import mobileDark from './images/bg-mobile-dark.jpg';
+import desktopDark from './images/bg-desktop-dark.jpg';
+import desktopLight from './images/bg-desktop-light.jpg';
 import CreateTask from './components/CreateTask/CreateTask';
 import { useState } from 'react';
 import TaskList from './components/TaskList/TaskList';
@@ -8,10 +10,12 @@ import { DataContext } from './context/DataContext';
 import Header from './components/Header/Header';
 import { ThemeContext } from './context/ThemeContext';
 import FilterTasks from './components/FilterTasks/FilterTasks';
-import CheckBox from './components/CheckBox/CheckBox';
 import { FilterContext } from './context/FilterContext';
+import { useMediaQuery } from './Hooks/useMediaQuery';
 
 const App = () => {
+	let { matches } = useMediaQuery('(max-width:375px');
+
 	const [tasks, setTasks] = useState([
 		{ id: 1, text: 'Learn react', completed: false },
 		{ id: 2, text: 'Learn mongo', completed: true },
@@ -39,29 +43,41 @@ const App = () => {
 			className='app'
 			style={{
 				backgroundImage: `url(${
-					theme.selected === 'light' ? mobileLight : mobileDark
+					matches
+						? theme.selected === 'light'
+							? mobileLight
+							: mobileDark
+						: theme.selected === 'light'
+						? desktopLight
+						: desktopDark
 				})`,
-				backgroundColor: theme[theme.selected].taskBgColor,
+				backgroundColor: theme[theme.selected].mainBgColor,
 				color: theme[theme.selected].textColor,
 			}}
 		>
-			<ThemeContext.Provider value={{ theme, setTheme }}>
-				<Header />
-				<DataContext.Provider value={{ tasks, setTasks }}>
-					<CreateTask />
-					<FilterContext.Provider value={{ filter, setFilter }}>
-						<TaskList />
-						<FilterTasks />
-					</FilterContext.Provider>
-				</DataContext.Provider>
-			</ThemeContext.Provider>
-			{tasks.length > 0 ? (
-				<span className='app__notice'>Drag and drop to reorder list</span>
-			) : (
-				<span className='app__notice app__notice-nolist'>
-					Create a new Task
-				</span>
-			)}
+			<div className='container'>
+				<ThemeContext.Provider value={{ theme, setTheme }}>
+					<Header />
+					<DataContext.Provider value={{ tasks, setTasks }}>
+						<CreateTask />
+						<FilterContext.Provider value={{ filter, setFilter }}>
+							<TaskList />
+							<FilterTasks />
+						</FilterContext.Provider>
+					</DataContext.Provider>
+				</ThemeContext.Provider>
+				{tasks.length > 0 ? (
+					<>
+						{!matches && (
+							<span className='app__notice'>Drag and drop to reorder list</span>
+						)}
+					</>
+				) : (
+					<span className='app__notice app__notice-nolist'>
+						Create a new Task
+					</span>
+				)}
+			</div>
 		</div>
 	);
 };

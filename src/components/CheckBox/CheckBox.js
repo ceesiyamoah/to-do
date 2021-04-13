@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
 import './index.scss';
 const CheckBox = ({ id = null, completed }) => {

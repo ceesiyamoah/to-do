@@ -1,9 +1,8 @@
 .task {
-	width: 100%;
 	flex: 1;
 	display: flex;
 	cursor: move;
-	padding: 0.9rem 0.5rem;
+	padding: var(--padding-default);
 	border-bottom: 2px solid transparent;
 
 	&-dragover {
@@ -13,12 +12,12 @@
 	&__text {
 		text-align: start;
 		flex: 16;
+		margin: auto 0;
 	}
 	&__close-icon {
 		width: 1rem;
 		height: 1rem;
-		fill: black;
-		margin-right: 0.5rem;
+		fill: currentColor;
 		transform: scale(0.5);
 		display: inline;
 		transition: all 0.2s;
@@ -33,5 +32,11 @@
 		&:active {
 			fill: rgba(151, 6, 6, 0.589);
 		}
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.task {
+		padding: var(--padding-large);
 	}
 }

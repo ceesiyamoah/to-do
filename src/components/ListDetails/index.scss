@@ -1,7 +1,7 @@
 .details {
 	display: flex;
 	justify-content: space-between;
-	padding: 0.9rem 0.5rem;
+	padding: 0.9rem var(--padding-default);
 	font-size: 0.7rem;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -26,5 +26,11 @@
 		&:active {
 			transform: scale(1.05);
 		}
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.details {
+		padding: var(--padding-large);
 	}
 }

@@ -61,7 +61,7 @@ const Task = ({ id, text, completed }) => {
 				),
 		];
 
-		setTasks(tempTasks);
+		currentPositionIndex !== newPositionIndex && setTasks(tempTasks);
 		setDragOver(false);
 	};
 	const dragStart = (e) => {

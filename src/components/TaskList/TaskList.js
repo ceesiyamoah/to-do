@@ -6,10 +6,9 @@ import { ThemeContext } from '../../context/ThemeContext';
 import ListDetails from '../ListDetails/ListDetails';
 import { FilterContext } from './../../context/FilterContext';
 const TaskList = () => {
-	const { tasks, setTasks } = useContext(DataContext);
+	const { tasks } = useContext(DataContext);
 	const { theme } = useContext(ThemeContext);
 	const { filter } = useContext(FilterContext);
-	console.log(filter);
 
 	return (
 		<>

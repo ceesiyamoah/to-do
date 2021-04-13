@@ -6,12 +6,8 @@
 
 	&__item {
 		overflow: hidden;
-		// display: flex;
-		// justify-content: space-between;
-		// align-items: center;
-		color: blue;
+
 		background-color: inherit;
-		//padding: 0.9rem 0.5rem;
 		border-bottom: 0.5px solid var(--very-grayish-blue);
 
 		&:first-child {

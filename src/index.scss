@@ -1,8 +1,10 @@
 :root {
 	--very-light-grey: hsl(0, 0%, 98%);
-	--very-grayish-blue: hsl(236, 9%, 61%);
+	--very-grayish-blue: hsl(236, 33%, 92%);
 	--gradient-1: hsl(192, 100%, 67%);
 	--gradient-2: hsl(280, 87%, 65%);
+	--padding-default: 0.8rem;
+	--padding-large: 1rem;
 }
 * {
 	margin: 0;
@@ -29,9 +31,10 @@ body {
 
 .app {
 	padding: 3rem 1.5rem;
-	height: 100vh;
 	background-size: auto;
 	background-repeat: no-repeat;
+	font-size: 0.72rem;
+	height: 100vh;
 
 	&__notice {
 		color: inherit;
@@ -47,5 +50,22 @@ body {
 
 	@media only screen and (min-width: 375) {
 		background-position: center top;
+	}
+}
+
+@media only screen and (min-width: 375px) {
+	.app {
+		background-position: center top;
+		font-size: 1rem;
+	}
+	.container {
+		margin: 0 auto;
+		max-width: 500px;
+	}
+}
+
+@media only screen and (max-width: 375px), (min-width: 1440px) {
+	.app {
+		background-size: contain;
 	}
 }

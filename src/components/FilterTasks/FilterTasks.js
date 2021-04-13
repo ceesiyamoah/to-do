@@ -43,7 +43,6 @@ const FilterTasks = () => {
 							checked={checked[1]}
 							onChange={() => {
 								setChecked([false, true, false]);
-								//setTasks((state) => tasks.filter((task) => !task.completed));
 								setFilter(false);
 							}}
 						/>
@@ -60,7 +59,7 @@ const FilterTasks = () => {
 							checked={checked[2]}
 							onChange={() => {
 								setChecked([false, false, true]);
-								//setTasks((state) => tasks.filter((task) => task.completed));
+
 								setFilter(true);
 							}}
 						/>
