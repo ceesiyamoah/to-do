@@ -4,7 +4,6 @@
 	padding: 0.5rem;
 	border-radius: 5px;
 	border: none;
-	background-color: var(--very-light-grey);
 	display: flex;
 	align-items: center;
 
@@ -15,10 +14,37 @@
 		flex: 1;
 		background-color: inherit;
 		color: inherit;
+		border-radius: 0;
+		&:focus:invalid {
+			border-bottom: 1px solid red;
+		}
 	}
 
 	&__checkbox:checked + &__button &__icon {
 		background-image: url(../../images/icon-check.svg);
 		background-size: cover;
+	}
+
+	&__form {
+		width: 100%;
+		display: flex;
+	}
+}
+
+.btn-arrow {
+	cursor: pointer;
+	transition: all 0.2s;
+	background: inherit;
+	border: none;
+	font-family: inherit;
+	color: inherit;
+	&:hover {
+		color: blue;
+	}
+	&:active {
+		transform: scale(1.5);
+	}
+	&:focus {
+		outline: none;
 	}
 }

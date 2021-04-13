@@ -7,6 +7,7 @@ import TaskList from './components/TaskList/TaskList';
 import { DataContext } from './context/DataContext';
 import Header from './components/Header/Header';
 import { ThemeContext } from './context/ThemeContext';
+import FilterTasks from './components/FilterTasks/FilterTasks';
 
 const App = () => {
 	const [tasks, setTasks] = useState([
@@ -37,6 +38,8 @@ const App = () => {
 				backgroundImage: `url(${
 					theme.selected === 'light' ? mobileLight : mobileDark
 				})`,
+				backgroundColor: theme[theme.selected].taskBgColor,
+				color: theme[theme.selected].textColor,
 			}}
 		>
 			<ThemeContext.Provider value={{ theme, setTheme }}>
@@ -45,8 +48,16 @@ const App = () => {
 				<DataContext.Provider value={{ tasks, setTasks }}>
 					<CreateTask />
 					<TaskList />
+					<FilterTasks />
 				</DataContext.Provider>
 			</ThemeContext.Provider>
+			{tasks.length > 0 ? (
+				<span className='app__notice'>Drag and drop to reorder list</span>
+			) : (
+				<span className='app__notice app__notice-nolist'>
+					Create a new Task
+				</span>
+			)}
 		</div>
 	);
 };

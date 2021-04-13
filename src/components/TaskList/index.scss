@@ -2,46 +2,21 @@
 	list-style: none;
 	margin-top: 2rem;
 	background-color: inherit;
+	border-radius: 5px;
 
 	&__item {
 		overflow: hidden;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		// display: flex;
+		// justify-content: space-between;
+		// align-items: center;
 		color: blue;
 		background-color: inherit;
 		padding: 0.9rem 0.5rem;
+		border-bottom: 0.5px solid var(--very-grayish-blue);
 
 		&:first-child {
-			border-top-right-radius: 5px;
-			border-top-left-radius: 5px;
-		}
-		&:not(:last-child) {
-			border-bottom: 0.5px solid var(--very-grayish-blue);
+			border-top-right-radius: inherit;
+			border-top-left-radius: inherit;
 		}
 	}
-}
-.close-icon {
-	width: 1rem;
-	height: 1rem;
-	fill: black;
-	margin-right: 0.5rem;
-	transform: scale(0.5);
-	display: inline;
-	transition: all 0.2s;
-
-	@media (hover: hover) {
-		&:hover {
-			fill: red;
-			transform: rotate(90deg) scale(0.5);
-		}
-	}
-	&:active {
-		fill: rgba(151, 6, 6, 0.589);
-	}
-}
-
-.task-text {
-	text-align: start;
-	flex: 16;
 }

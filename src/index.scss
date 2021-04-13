@@ -32,4 +32,16 @@ body {
 	height: 100vh;
 	background-size: auto;
 	background-repeat: no-repeat;
+
+	&__notice {
+		color: inherit;
+		font-size: 0.7rem;
+		text-align: center;
+		margin-top: 2rem;
+		width: 100%;
+		display: inline-block;
+		&-nolist {
+			margin-top: 4rem;
+		}
+	}
 }

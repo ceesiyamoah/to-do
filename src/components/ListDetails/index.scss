@@ -1,0 +1,30 @@
+.details {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.9rem 0.5rem;
+	font-size: 0.7rem;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: inherit;
+	&__text {
+		color: inherit;
+	}
+	&__button {
+		color: inherit;
+		border: none;
+		font-family: inherit;
+		background-color: transparent;
+		font-size: inherit;
+		transition: all 0.2s;
+		cursor: pointer;
+		&:hover {
+			color: red;
+		}
+		&:focus {
+			outline: none;
+		}
+		&:active {
+			transform: scale(1.05);
+		}
+	}
+}

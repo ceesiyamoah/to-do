@@ -1,0 +1,28 @@
+.filter {
+	margin-top: 1rem;
+	padding: 1rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	background-color: red;
+	font-size: 0.8rem;
+	transition: all 0.2s;
+
+	&__selection {
+		&:not(:last-child) {
+			margin-right: 0.5rem;
+		}
+	}
+	&__input {
+		display: none;
+	}
+	&__label {
+		cursor: pointer;
+		color: inherit;
+	}
+
+	&__input:checked + &__label {
+		color: blue;
+	}
+}
