@@ -7,7 +7,8 @@ import { DataContext } from './../../context/DataContext';
 const CreateTask = () => {
 	const [task, setTask] = useState('');
 	const { theme } = useContext(ThemeContext);
-	const { tasks, setTasks } = useContext(DataContext);
+	const { setTasks } = useContext(DataContext);
+
 	return (
 		<div
 			className='newtask'
