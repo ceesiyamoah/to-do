@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution url](https://github.com/ceesiyamoah/to-do)
-- Live Site URL: [ccyamoah-todo.netlify.app](https://your-live-site-url.com)
+- Solution URL: [Github](https://github.com/ceesiyamoah/to-do)
+- Live Site URL: [Live](https://ccyamoah-todo.netlify.app)
 
 ## My process
 
