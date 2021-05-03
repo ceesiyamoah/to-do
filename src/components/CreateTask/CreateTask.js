@@ -3,6 +3,8 @@ import './index.scss';
 import CheckBox from './../CheckBox/CheckBox';
 import { ThemeContext } from '../../context/ThemeContext';
 import { DataContext } from './../../context/DataContext';
+import { DataStore } from '@aws-amplify/datastore';
+import { Todo } from '../../models';
 
 const CreateTask = () => {
 	const [task, setTask] = useState('');
@@ -26,12 +28,18 @@ const CreateTask = () => {
 					setTasks((state) => [
 						{
 							id: Math.random() * 99999,
-							text: task,
+							task,
 							completed: false,
 						},
 						...state,
 					]);
 					setTask('');
+					DataStore.save(
+						new Todo({
+							task,
+							completed: false,
+						})
+					).then((data) => console.log(data));
 				}}
 			>
 				<input

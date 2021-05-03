@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import './index.scss';
 import { DataContext } from './../../context/DataContext';
+import { DataStore, Predicates } from '@aws-amplify/datastore';
+import { Todo } from '../../models';
 const ListDetails = () => {
 	const { tasks, setTasks } = useContext(DataContext);
 	return (
@@ -14,6 +16,7 @@ const ListDetails = () => {
 						className='details__button'
 						onClick={() => {
 							setTasks(tasks.filter((task) => !task.completed));
+							DataStore.delete(Todo, Predicates.ALL);
 						}}
 					>
 						Clear Completed

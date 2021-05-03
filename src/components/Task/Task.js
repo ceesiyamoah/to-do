@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import CheckBox from '../CheckBox/CheckBox';
 import { ThemeContext } from '../../context/ThemeContext';
 import { DataContext } from './../../context/DataContext';
+import { DataStore } from '@aws-amplify/datastore';
+import { Todo } from '../../models';
 import './index.scss';
 
-const Task = ({ id, text, completed }) => {
+const Task = ({ id, task, completed }) => {
 	const { theme } = useContext(ThemeContext);
 	const { tasks, setTasks } = useContext(DataContext);
 	const [dragOver, setDragOver] = useState(false);
@@ -21,27 +23,6 @@ const Task = ({ id, text, completed }) => {
 		const currentPositionIndex = tasks.findIndex(
 			(task) => task.id === +currentPosition
 		);
-
-		//! More readable version
-		// if (currentPositionIndex < newPositionIndex) {
-		// 	tempTasks = [
-		// 		...tempTasks
-		// 			.slice(0, newPositionIndex + 1)
-		// 			.filter((item) => item.id !== currentPosition),
-		// 		tempTasks[currentPositionIndex],
-		// 		...tempTasks
-		// 			.slice(newPositionIndex + 1)
-		// 			.filter((item) => item.id !== newPosition),
-		// 	];
-		// } else {
-		// 	tempTasks = [
-		// 		...tempTasks.slice(0, newPositionIndex + 1),
-		// 		tempTasks[currentPositionIndex],
-		// 		...tempTasks
-		// 			.slice(newPositionIndex + 1)
-		// 			.filter((item) => item.id !== currentPosition),
-		// 	];
-		// }
 
 		tempTasks = [
 			...tempTasks
@@ -94,13 +75,14 @@ const Task = ({ id, text, completed }) => {
 					color: theme[theme.selected].textColor,
 				}}
 			>
-				{text}
+				{task}
 			</span>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				className='task__close-icon'
 				onClick={() => {
 					setTasks(tasks.filter((task) => task.id !== id));
+					DataStore.query(Todo, id).then((field) => DataStore.delete(field));
 				}}
 			>
 				<path
